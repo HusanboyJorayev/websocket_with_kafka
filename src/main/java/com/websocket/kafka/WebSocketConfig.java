@@ -15,6 +15,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(getWebSocketHandler(), "/tutorial").setAllowedOrigins("*");
         registry.addHandler(getFileWebSocketHandler(), "/file").setAllowedOrigins("*");
+        registry.addHandler(getFileWebSocketHandler(), "/photo").setAllowedOrigins("*");
     }
 
     @Bean
@@ -25,6 +26,11 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Bean
     public WebSocketHandler getFileWebSocketHandler() {
         return new FileWebSocketHandler();
+    }
+
+    @Bean
+    public WebSocketHandler getPhotoWebSocketHandler() {
+        return new PhotoWebSocketHandler();
     }
 }
 
